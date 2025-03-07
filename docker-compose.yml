@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mariadb:10.4
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: mariapass123
+      MYSQL_USER: filmuser
+      MYSQL_PASSWORD: Password123
+      MYSQL_DATABASE: filmDB
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: on-failure
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_dc
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3308
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8183:80
+  backend:
+    image: backend
+    container_name: backendJava
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/filmDB
+      SPRING_DATASOURCE_USERNAME: filmuser
+      SPRING_DATASOURCE_PASSWORD: Password123
+    depends_on:
+      - mysql
+    restart: on-failure
+    build: .
+
