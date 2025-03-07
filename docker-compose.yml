@@ -35,6 +35,8 @@ services:
       SPRING_DATASOURCE_PASSWORD: Password123
     depends_on:
       - mysql
+    ports:
+      - 8090:8090
     restart: on-failure
     build: .
 
