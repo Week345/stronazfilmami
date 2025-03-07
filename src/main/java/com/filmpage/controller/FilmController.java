@@ -15,27 +15,32 @@ import java.util.List;
 @RestController
 public class FilmController {
     private final FilmService service;
-    @PostMapping("/add")
+    @PostMapping("/films/add")
     public FilmDto addFilm(@RequestBody FilmDto filmDto) {
         return service.addFilm(filmDto);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/films/delete/{id}")
     public void removeFilm(@PathVariable Long id) {
         service.deleteFilm(id);
     }
-    @PutMapping("/edit")
+    @PutMapping("/films/edit")
     public FilmDto editFilm(@RequestBody FilmDto filmDto) {
         return service.editFilm(filmDto);
     }
-    @PostMapping("/rate/{id}")
+    @PostMapping("/films/rate/{id}")
     public FilmDto rateFilm(@PathVariable Long id, @RequestParam Integer rating) {
         return service.rateFilm(id, rating);
     }
-    @PostMapping("/search")
+    @PostMapping("/films/search")
     @PageableAsQueryParam
     public Page<FilmDto> searchFilms(@RequestBody SearchRequest searchQuery, Pageable pageable) {
         return service.search(searchQuery, pageable);
     }
+    @GetMapping("/films/{id}")
+    public FilmDto getFilm(@PathVariable Long id) {
+        return service.getFilm(id);
+    }
+
 
     List<FilmDto> search(SearchRequest dto, Pageable pageable) {
         return service.search(dto, pageable).toList();

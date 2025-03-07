@@ -83,4 +83,7 @@ public class FilmService {
         }
 
     }
+    public FilmDto getFilm(Long id) {
+        return mapper.mapToDto(repository.findById(id).orElseThrow(() -> new FilmNotFound("Nie znaleziono filmu")));
+    }
 }

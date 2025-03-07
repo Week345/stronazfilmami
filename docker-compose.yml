@@ -11,9 +11,9 @@ services:
       MYSQL_PASSWORD: Password123
       MYSQL_DATABASE: filmDB
     volumes:
+      - persData:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: on-failure
-
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin_dc
@@ -39,4 +39,5 @@ services:
       - 8090:8090
     restart: on-failure
     build: .
-
+volumes:
+  persData:

@@ -11,8 +11,16 @@ create table if not exists films (prodYear integer,
     ratingSum integer,
     ratingsNumber integer,
     id int not null auto_increment,
-    awards varchar(255),
+    awards text,
     category varchar(50),
-    description varchar(255),
+    description text,
     title varchar(80),
-    primary key (id)) engine=InnoDB;
+    primary key (id)) engine=InnoDB default charset=utf8 default collate utf8_polish_ci;
+
+insert into films(prodYear,awards,category,description,title) values(
+    1994,
+    'EnergaCamerimage, Amerykańska Gildia Scenarzystów, Amerykański Instytut Filmowy x2, Amerykańskie Stowarzyszenie Operatorów Filmowych x2, Japońska Akademia Filmowa',
+    'Dramat',
+    'Adaptacja opowiadania Stephena Kinga. Niesłusznie skazany na dożywocie bankier, stara się przetrwać w brutalnym, więziennym świecie.',
+    'Skazani na Shawshank'
+);
