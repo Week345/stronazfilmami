@@ -11,6 +11,7 @@ public interface FilmMapper {
     FilmDto mapToDto(Film film);
     @Mapping(target = "ratingsNumber", ignore = true)
     @Mapping(target = "ratingSum", ignore = true)
+    @Mapping(target = "image", ignore = true)
     Film mapToEntity(FilmDto filmDto);
 
 }

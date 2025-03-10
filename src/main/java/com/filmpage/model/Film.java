@@ -21,11 +21,17 @@ public class Film {
 
     private String category;
 
+    @Column(columnDefinition = "TEXT")
     private String description;
 
+    @Column(length = 65535, columnDefinition = "text")
     private String awards;
 
     private Integer prodYear;
+
+    @Lob
+    @Column(name = "image", columnDefinition = "LONGBLOB")
+    private byte[] image;
 
     @Getter
     private Integer ratingsNumber;

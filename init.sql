@@ -15,7 +15,13 @@ create table if not exists films (prodYear integer,
     category varchar(50),
     description text,
     title varchar(80),
+    image longblob,
     primary key (id)) engine=InnoDB default charset=utf8 default collate utf8_polish_ci;
+
+alter table films modify column awards TEXT;
+alter table films modify column description TEXT;
+alter table films convert to character set utf8 collate utf8_polish_ci;
+alter schema filmDB default character set utf8 default collate utf8_polish_ci;
 
 insert into films(prodYear,awards,category,description,title) values(
     1994,
