@@ -22,5 +22,7 @@ public class FilmDto {
     private Integer prodYear;
 
     private byte[] image;
+    
+    private String imageType;
 
 }

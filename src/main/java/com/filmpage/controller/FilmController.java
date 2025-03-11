@@ -8,7 +8,9 @@ import org.springdoc.core.converters.models.PageableAsQueryParam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -40,7 +42,10 @@ public class FilmController {
     public FilmDto getFilm(@PathVariable Long id) {
         return service.getFilm(id);
     }
-
+    @PostMapping("/films/{id}/upload")
+    public FilmDto uploadFilm(@PathVariable Long id, @RequestParam("file") MultipartFile file) throws IOException {
+        return service.uploadImage(id, file);
+    }
 
     List<FilmDto> search(SearchRequest dto, Pageable pageable) {
         return service.search(dto, pageable).toList();

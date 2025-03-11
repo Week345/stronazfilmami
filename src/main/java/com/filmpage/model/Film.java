@@ -33,6 +33,8 @@ public class Film {
     @Column(name = "image", columnDefinition = "LONGBLOB")
     private byte[] image;
 
+    private String imageType;
+
     @Getter
     private Integer ratingsNumber;
     @Getter
