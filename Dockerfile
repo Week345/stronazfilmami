@@ -7,5 +7,5 @@ COPY . /app
 RUN mvn -v
 RUN mvn clean install -DskipTests
 EXPOSE 8090
-ADD ./target/*.jar /app/backend.jar
+RUN cp target/*.jar /app/backend.jar
 ENTRYPOINT ["java", "-jar", "/app/backend.jar"]

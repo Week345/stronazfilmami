@@ -97,6 +97,6 @@ public class FilmService {
         Film existFilm = film.get();
         existFilm.setImage(file.getBytes());
         existFilm.setImageType(file.getContentType());
-        return mapper.mapToDto(repository.save(existFilm));
+        return mapper.mapToDto(repository.save(existFilm)); 
     }
 }
