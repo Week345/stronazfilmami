@@ -91,8 +91,11 @@ public class FilmService {
 
     public FilmDto uploadImage(Long id, MultipartFile file) throws IOException {
         Optional<Film> film = repository.findById(id);
-        if (film.isEmpty() || file == null || file.isEmpty()) {
-            throw new IllegalArgumentException("Nie znaleziono filmu lub przesłano zły plik");
+        if (film.isEmpty()) {
+            throw new FilmNotFound("Nie znaleziono filmu");
+        }
+        if (file == null || file.isEmpty()) {
+            throw new IllegalArgumentException("Zły format pliku");
         }
         Film existFilm = film.get();
         existFilm.setImage(file.getBytes());
