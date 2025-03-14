@@ -4,7 +4,6 @@ WORKDIR /app
 ADD pom.xml /app
 RUN mvn verify clean --fail-never
 COPY . /app
-RUN mvn -v
 RUN mvn clean install -DskipTests
 EXPOSE 8090
 RUN cp target/*.jar /app/backend.jar
