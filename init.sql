@@ -16,6 +16,7 @@ create table if not exists films (prodYear integer,
     description text,
     title varchar(80),
     image longblob,
+    imageType text,
     primary key (id)) engine=InnoDB default charset=utf8 default collate utf8_polish_ci;
 
 alter table films modify column awards TEXT;
