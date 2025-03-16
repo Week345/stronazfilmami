@@ -3,6 +3,7 @@ package com.filmpage.dto;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 public class FilmDto {
@@ -11,7 +12,7 @@ public class FilmDto {
 
     private String title;
 
-    private String category;
+    private List<CategoryDto> categories;
 
     private String description;
 

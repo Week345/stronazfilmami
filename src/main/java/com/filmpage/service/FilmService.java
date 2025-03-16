@@ -29,7 +29,7 @@ public class FilmService {
         QFilm film = QFilm.film;
         BooleanBuilder builder = new BooleanBuilder();
         if (dto.getCategory() != null) {
-            builder.and(film.category.containsIgnoreCase(dto.getCategory()));
+            builder.and(film.categories.any().name.containsIgnoreCase(dto.getCategory()));
         }
         if (dto.getSearchQuery() != null) {
             builder.and(film.title.containsIgnoreCase(dto.getSearchQuery()))
@@ -70,9 +70,6 @@ public class FilmService {
     private void validateAdding(FilmDto filmDto) {
         if (filmDto.getTitle() == null || filmDto.getTitle().isEmpty()) {
             throw new FilmVariableNull("Tytuł nie może mieć wartości null lub być pusty");
-        }
-        if (filmDto.getCategory() == null || filmDto.getCategory().isEmpty()) {
-            throw new FilmVariableNull("Kategoria nie może mieć wartośći null lub być pusta");
         }
         if (filmDto.getRating() == null) {
             throw new FilmVariableNull("Ocena nie może mieć wartości null");

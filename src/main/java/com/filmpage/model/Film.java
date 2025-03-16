@@ -7,6 +7,7 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 
 @Entity
 @Table(name = "films")
@@ -19,8 +20,6 @@ public class Film {
 
     private String title;
 
-    private String category;
-
     @Column(columnDefinition = "TEXT")
     private String description;
 
@@ -28,6 +27,14 @@ public class Film {
     private String awards;
 
     private Integer prodYear;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "film_category",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories;
 
     @Lob
     @Column(name = "image", columnDefinition = "LONGBLOB")
