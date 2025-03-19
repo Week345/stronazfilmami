@@ -50,15 +50,6 @@ insert into categories(name) values ('Akcja'),
 ('Western'),
 ('Kryminał');
 
-insert into films(prodYear,awards,description,title) values(
-    1994,
-    'EnergaCamerimage, Amerykańska Gildia Scenarzystów, Amerykański Instytut Filmowy x2, Amerykańskie Stowarzyszenie Operatorów Filmowych x2, Japońska Akademia Filmowa',
-    'Adaptacja opowiadania Stephena Kinga. Niesłusznie skazany na dożywocie bankier, stara się przetrwać w brutalnym, więziennym świecie.',
-    'Skazani na Shawshank'
-);
-
-insert into film_category values((select id from films where title = 'Skazani na Shawshank'),(select id from categories where name = 'Dramat'));
-
 insert into films(prodYear,awards,description,title) values (
     2014,
     'Saturn x3',
@@ -67,3 +58,24 @@ insert into films(prodYear,awards,description,title) values (
 );
 insert into film_category values((select id from films where title = 'Interstellar'),(select id from categories where name = 'Dramat'));
 insert into film_category values((select id from films where title = 'Interstellar'),(select id from categories where name = 'Sci-Fi'));
+
+insert into films(prodYear,awards,description,title) values (
+    2008,
+    'Saturn x5',
+    'Bruce Wayne (Christian Bale) po raz kolejny w roli Batmana toczy zażartą wojnę ze światem przestępczym w Gotham City. Gdy we współpracy z porucznikiem Jimem Gordonem i prokuratorem okręgowym Harveyem Dentem udaje się rozbić kryminalne podziemie miasta, na horyzoncie pojawia się nowy geniusz zbrodni, Joker. Celem nowego wroga Batmana jest zmuszenia go, by ten przeszedł na złą stronę mocy i przestał być bohaterem a stał się złoczyńcą. Czy plan Jokera odniesie sukces?',
+    'Mroczny Rycerz'
+);
+
+insert into film_category values((select id from films where title = 'Mroczny Rycerz'),(select id from categories where name = 'Sci-Fi'));
+insert into film_category values((select id from films where title = 'Mroczny Rycerz'),(select id from categories where name = 'Akcja'));
+
+
+insert into films(prodYear,awards,description,title) values (
+    2010,
+    'Oscar x4',
+    'Dom Cobb to niezwykle utalentowany złodziej, który do doskonałości opanował kradzież najcenniejszych sekretów z głębokich czeluści podświadomości podczas snu. Nietypowa umiejętność uczyniła Cobba pożądanym graczem na zdradzieckim rynku korporacyjnego wywiadu. Jego talent stał się również jego prześladowcą, uczynił z niego uciekiniera i kosztował wszystko, co kiedykolwiek kochał. Jedyną szansą, dzięki której będzie mógł odzyskać wolność i wrócić do życia sprzed lat, będzie ostatnie w karierze zadanie – dokona niemożliwego: incepcji. Dom wspólnie z grupą innych specjalistów, zamiast typowej perfekcyjnej kradzieży pomysłu, będą musieli taki pomysł we śnie zaszczepić.',
+    'Incepcja'
+);
+
+insert into film_category values((select id from films where title = 'Incepcja'),(select id from categories where name = 'Akcja'));
+insert into film_category values((select id from films where title = 'Incepcja'),(select id from categories where name = 'Sci-Fi'));
