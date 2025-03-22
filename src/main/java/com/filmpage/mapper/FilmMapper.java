@@ -11,7 +11,6 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel ="spring", unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface FilmMapper {
     FilmDto mapToDto(Film film);
-    @Mapping(target = "ratingsNumber", ignore = true)
     @Mapping(target = "ratingSum", ignore = true)
     Film mapToEntity(FilmDto filmDto);
     @Mapping(target = "films", ignore = true)

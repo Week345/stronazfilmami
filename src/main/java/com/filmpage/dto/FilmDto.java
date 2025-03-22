@@ -26,4 +26,6 @@ public class FilmDto {
     
     private String imageType;
 
+    private Integer ratingsNumber;
+
 }

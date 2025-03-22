@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -98,5 +99,8 @@ public class FilmService {
         existFilm.setImage(file.getBytes());
         existFilm.setImageType(file.getContentType());
         return mapper.mapToDto(repository.save(existFilm)); 
+    }
+    public List<FilmDto> getAllFilms() {
+        return repository.findAll().stream().map(mapper::mapToDto).toList();
     }
 }

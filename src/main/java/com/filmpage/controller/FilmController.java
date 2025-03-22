@@ -4,6 +4,7 @@ import com.filmpage.dto.FilmDto;
 import com.filmpage.dto.SearchRequest;
 import com.filmpage.service.FilmService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.converters.models.PageableAsQueryParam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@Slf4j
 public class FilmController {
     private final FilmService service;
     @PostMapping("/films/add")
@@ -41,6 +43,10 @@ public class FilmController {
     @GetMapping("/films/{id}")
     public FilmDto getFilm(@PathVariable Long id) {
         return service.getFilm(id);
+    }
+    @GetMapping("/films/all")
+    public List<FilmDto> getAllFilms() {
+        return service.getAllFilms();
     }
     @PostMapping("/films/{id}/upload")
     public FilmDto uploadFilm(@PathVariable Long id, @RequestParam("file") MultipartFile file) throws IOException {
