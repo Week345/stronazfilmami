@@ -28,4 +28,6 @@ public class FilmDto {
 
     private Integer ratingsNumber;
 
+    private Integer IMDBRating;
+
 }

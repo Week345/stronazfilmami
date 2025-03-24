@@ -42,6 +42,8 @@ public class Film {
 
     private String imageType;
 
+    private Integer IMDBRating;
+
     @Getter
     private Integer ratingsNumber;
     @Getter

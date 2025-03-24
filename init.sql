@@ -10,6 +10,7 @@ create table if not exists films (prodYear integer,
     rating decimal(5,2),
     ratingSum integer,
     ratingsNumber integer,
+    IMDBRating integer,
     id int not null auto_increment,
     awards text,
     description text,
@@ -50,7 +51,8 @@ insert into categories(name) values ('Akcja'),
 ('Western'),
 ('Kryminał');
 
-insert into films(rating, ratingSum, ratingsNumber, prodYear,awards,description,title) values (
+insert into films(IMDBRating, rating, ratingSum, ratingsNumber, prodYear,awards,description,title) values (
+    19,
     4.0,
     26172,
     6543,
@@ -62,7 +64,8 @@ insert into films(rating, ratingSum, ratingsNumber, prodYear,awards,description,
 insert into film_category values((select id from films where title = 'Interstellar'),(select id from categories where name = 'Dramat'));
 insert into film_category values((select id from films where title = 'Interstellar'),(select id from categories where name = 'Sci-Fi'));
 
-insert into films(rating, ratingSum, ratingsNumber, prodYear,awards,description,title) values (
+insert into films(IMDBRating, rating, ratingSum, ratingsNumber, prodYear,awards,description,title) values (
+    3,
     4.9,
     47216,
     9636,
@@ -76,7 +79,8 @@ insert into film_category values((select id from films where title = 'Mroczny Ry
 insert into film_category values((select id from films where title = 'Mroczny Rycerz'),(select id from categories where name = 'Akcja'));
 
 
-insert into films(rating, ratingSum, ratingsNumber, prodYear,awards,description,title) values (
+insert into films(IMDBRating, rating, ratingSum, ratingsNumber, prodYear,awards,description,title) values (
+    14,
     4.8,
     38740,
     8071,
