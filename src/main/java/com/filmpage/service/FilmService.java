@@ -1,5 +1,6 @@
 package com.filmpage.service;
 
+import com.filmpage.dto.CreateFilmDto;
 import com.filmpage.dto.FilmDto;
 import com.filmpage.dto.SearchRequest;
 import com.filmpage.exception.FilmNotFound;
@@ -39,9 +40,10 @@ public class FilmService {
 
         return repository.findAll(builder, pageable).map(mapper::mapToDto);
     }
-    public FilmDto addFilm(FilmDto filmDto) {
-        validateAdding(filmDto);
-        return mapper.mapToDto(repository.save(mapper.mapToEntity(filmDto)));
+    public FilmDto addFilm(CreateFilmDto createFilmDto) {
+        validateAdding(createFilmDto);
+
+        return mapper.mapToDto(repository.save(mapper.mapToFilm(createFilmDto)));
 
     }
     public void deleteFilm(Long id) {
@@ -68,12 +70,9 @@ public class FilmService {
         filmRating.addRating(rating);
         return mapper.mapToDto(repository.save(filmRating));
     }
-    private void validateAdding(FilmDto filmDto) {
+    private void validateAdding(CreateFilmDto filmDto) {
         if (filmDto.getTitle() == null || filmDto.getTitle().isEmpty()) {
             throw new FilmVariableNull("Tytuł nie może mieć wartości null lub być pusty");
-        }
-        if (filmDto.getRating() == null) {
-            throw new FilmVariableNull("Ocena nie może mieć wartości null");
         }
         if (filmDto.getProdYear() == null) {
             throw new FilmVariableNull("Rok produkcji nie może mieć wartości null");

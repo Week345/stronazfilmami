@@ -1,5 +1,6 @@
 package com.filmpage.controller;
 
+import com.filmpage.dto.CreateFilmDto;
 import com.filmpage.dto.FilmDto;
 import com.filmpage.dto.SearchRequest;
 import com.filmpage.service.FilmService;
@@ -20,8 +21,8 @@ import java.util.List;
 public class FilmController {
     private final FilmService service;
     @PostMapping("/films/add")
-    public FilmDto addFilm(@RequestBody FilmDto filmDto) {
-        return service.addFilm(filmDto);
+    public FilmDto addFilm(@RequestBody CreateFilmDto createFilmDto){
+        return service.addFilm(createFilmDto);
     }
     @DeleteMapping("/films/delete/{id}")
     public void removeFilm(@PathVariable Long id) {

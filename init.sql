@@ -35,6 +35,8 @@ alter table films modify column description TEXT;
 alter table films convert to character set utf8 collate utf8_polish_ci;
 alter schema filmDB default character set utf8 default collate utf8_polish_ci;
 
+
+
 insert into categories(name) values ('Akcja'),
 ('Dramat'),
 ('Komedia'),
@@ -49,12 +51,12 @@ insert into categories(name) values ('Akcja'),
 ('Musical'),
 ('Historyczny'),
 ('Western'),
-('Kryminał');
+('Kryminał'),
+('Brak');
 
-insert into films(IMDBRating, rating, ratingSum, ratingsNumber, prodYear,awards,description,title) values (
+insert into films(IMDBRating, rating, ratingsNumber, prodYear,awards,description,title) values (
     19,
     4.0,
-    26172,
     6543,
     2014,
     'Saturn x3',
@@ -64,10 +66,9 @@ insert into films(IMDBRating, rating, ratingSum, ratingsNumber, prodYear,awards,
 insert into film_category values((select id from films where title = 'Interstellar'),(select id from categories where name = 'Dramat'));
 insert into film_category values((select id from films where title = 'Interstellar'),(select id from categories where name = 'Sci-Fi'));
 
-insert into films(IMDBRating, rating, ratingSum, ratingsNumber, prodYear,awards,description,title) values (
+insert into films(IMDBRating, rating, ratingsNumber, prodYear,awards,description,title) values (
     3,
     4.9,
-    47216,
     9636,
     2008,
     'Saturn x5',
@@ -79,10 +80,9 @@ insert into film_category values((select id from films where title = 'Mroczny Ry
 insert into film_category values((select id from films where title = 'Mroczny Rycerz'),(select id from categories where name = 'Akcja'));
 
 
-insert into films(IMDBRating, rating, ratingSum, ratingsNumber, prodYear,awards,description,title) values (
+insert into films(IMDBRating, rating, ratingsNumber, prodYear,awards,description,title) values (
     14,
     4.8,
-    38740,
     8071,
     2010,
     'Oscar x4',
