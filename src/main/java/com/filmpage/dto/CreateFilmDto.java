@@ -22,9 +22,7 @@ public class CreateFilmDto {
 
     private Integer prodYear;
 
-    private byte[] image;
-
-    private String imageType;
+    private String imageURL;
 
     private Integer ratingsNumber;
 

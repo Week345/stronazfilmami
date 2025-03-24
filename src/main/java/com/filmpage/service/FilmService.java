@@ -14,9 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,19 +84,6 @@ public class FilmService {
         return mapper.mapToDto(repository.findById(id).orElseThrow(() -> new FilmNotFound("Nie znaleziono filmu")));
     }
 
-    public FilmDto uploadImage(Long id, MultipartFile file) throws IOException {
-        Optional<Film> film = repository.findById(id);
-        if (film.isEmpty()) {
-            throw new FilmNotFound("Nie znaleziono filmu");
-        }
-        if (file == null || file.isEmpty()) {
-            throw new IllegalArgumentException("Zły format pliku");
-        }
-        Film existFilm = film.get();
-        existFilm.setImage(file.getBytes());
-        existFilm.setImageType(file.getContentType());
-        return mapper.mapToDto(repository.save(existFilm)); 
-    }
     public List<FilmDto> getAllFilms() {
         return repository.findAll().stream().map(mapper::mapToDto).toList();
     }

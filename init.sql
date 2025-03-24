@@ -15,8 +15,7 @@ create table if not exists films (prodYear integer,
     awards text,
     description text,
     title varchar(80),
-    image longblob,
-    imageType text,
+    imageURL text,
     primary key (id)) engine=InnoDB default charset=utf8 default collate utf8_polish_ci;
 
 create table if not exists categories (id int not null auto_increment,
@@ -54,7 +53,8 @@ insert into categories(name) values ('Akcja'),
 ('Kryminał'),
 ('Brak');
 
-insert into films(IMDBRating, rating, ratingsNumber, prodYear,awards,description,title) values (
+insert into films(imageURL, IMDBRating, rating, ratingsNumber, prodYear,awards,description,title) values (
+    'https://www.leslettresdelucie.fr/wp-content/uploads/2014/11/Interstellar-poster-2.jpg',
     19,
     4.0,
     6543,
@@ -66,7 +66,8 @@ insert into films(IMDBRating, rating, ratingsNumber, prodYear,awards,description
 insert into film_category values((select id from films where title = 'Interstellar'),(select id from categories where name = 'Dramat'));
 insert into film_category values((select id from films where title = 'Interstellar'),(select id from categories where name = 'Sci-Fi'));
 
-insert into films(IMDBRating, rating, ratingsNumber, prodYear,awards,description,title) values (
+insert into films(imageURL, IMDBRating, rating, ratingsNumber, prodYear,awards,description,title) values (
+    'https://a.allegroimg.com/original/114bea/161cde6f48a498586017d148f632/Plakat-filmowy-The-Dark-Knight-BATMAN-2008-100x70-240',
     3,
     4.9,
     9636,
@@ -80,7 +81,8 @@ insert into film_category values((select id from films where title = 'Mroczny Ry
 insert into film_category values((select id from films where title = 'Mroczny Rycerz'),(select id from categories where name = 'Akcja'));
 
 
-insert into films(IMDBRating, rating, ratingsNumber, prodYear,awards,description,title) values (
+insert into films(imageURL, IMDBRating, rating, ratingsNumber, prodYear,awards,description,title) values (
+    'https://encyklopediafantastyki.pl/images/7/74/Incepcja.jpg',
     14,
     4.8,
     8071,

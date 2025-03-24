@@ -36,11 +36,7 @@ public class Film {
     )
     private List<Category> categories;
 
-    @Lob
-    @Column(name = "image", columnDefinition = "LONGBLOB")
-    private byte[] image;
-
-    private String imageType;
+    private String imageURL;
 
     private Integer IMDBRating;
 
