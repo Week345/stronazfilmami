@@ -5,6 +5,7 @@ ADD pom.xml /app
 RUN mvn verify clean --fail-never
 COPY . /app
 RUN mvn clean install -DskipTests
+RUN mvn clean package
 EXPOSE 8090
 RUN cp target/*.jar /app/backend.jar
 ENTRYPOINT ["java", "-jar", "/app/backend.jar"]

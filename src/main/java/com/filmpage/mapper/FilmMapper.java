@@ -3,6 +3,7 @@ package com.filmpage.mapper;
 import com.filmpage.dto.CategoryDto;
 import com.filmpage.dto.CreateFilmDto;
 import com.filmpage.dto.FilmDto;
+import com.filmpage.dto.UpdateFilmDto;
 import com.filmpage.model.Category;
 import com.filmpage.model.Film;
 import com.filmpage.service.CategoryService;
@@ -34,5 +35,17 @@ public abstract class FilmMapper {
         String category1 = createFilmDto.getCategory1();
         String category2 = createFilmDto.getCategory2();
     return List.of(categoryService.findByName(category1), categoryService.findByName(category2));
+    }
+    public void map(Film filmTarget, UpdateFilmDto filmSource) {
+        filmTarget.setTitle(filmSource.getTitle());
+        filmTarget.setDescription(filmSource.getDescription());
+        filmTarget.setCategories(mapCategory(filmSource.getCategory1(), filmSource.getCategory2()));
+        filmTarget.setAwards(filmSource.getAwards());
+        filmTarget.setProdYear(filmSource.getProdYear());
+        filmTarget.setIMDBRating(filmSource.getIMDBRating());
+        filmTarget.setImageURL(filmSource.getImageURL());
+    }
+    public List<Category> mapCategory(String category1, String category2) {
+        return List.of(categoryService.findByName(category1), categoryService.findByName(category2));
     }
 }

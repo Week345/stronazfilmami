@@ -40,6 +40,8 @@ public class Film {
 
     private Integer IMDBRating;
 
+    private Boolean active;
+
     @Getter
     private Integer ratingsNumber;
     @Getter

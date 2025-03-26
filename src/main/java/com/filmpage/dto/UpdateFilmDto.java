@@ -5,7 +5,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class CreateFilmDto {
+public class UpdateFilmDto {
     private Long id;
 
     private String title;

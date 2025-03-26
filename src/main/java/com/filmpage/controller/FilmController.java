@@ -3,12 +3,14 @@ package com.filmpage.controller;
 import com.filmpage.dto.CreateFilmDto;
 import com.filmpage.dto.FilmDto;
 import com.filmpage.dto.SearchRequest;
+import com.filmpage.dto.UpdateFilmDto;
 import com.filmpage.service.FilmService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.converters.models.PageableAsQueryParam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,16 +24,17 @@ public class FilmController {
     public FilmDto addFilm(@RequestBody CreateFilmDto createFilmDto){
         return service.addFilm(createFilmDto);
     }
-    @DeleteMapping("/films/delete/{id}")
-    public void removeFilm(@PathVariable Long id) {
+    @PostMapping("/films/delete/{id}")
+    public ResponseEntity<Void> removeFilm(@PathVariable Long id) {
         service.deleteFilm(id);
+        return ResponseEntity.noContent().build();
     }
     @PutMapping("/films/edit")
-    public FilmDto editFilm(@RequestBody FilmDto filmDto) {
-        return service.editFilm(filmDto);
+    public FilmDto editFilm(@RequestBody UpdateFilmDto updateFilmDto) {
+        return service.editFilm(updateFilmDto);
     }
     @PostMapping("/films/rate/{id}")
-    public FilmDto rateFilm(@PathVariable Long id, @RequestParam Integer rating) {
+    public FilmDto rateFilm(@PathVariable Long id, @RequestParam("rating") Integer rating) {
         return service.rateFilm(id, rating);
     }
     @PostMapping("/films/search")

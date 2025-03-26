@@ -24,6 +24,8 @@ public class FilmDto {
 
     private String imageURL;
 
+    private Boolean active;
+
     private Integer ratingsNumber;
 
     private Integer IMDBRating;
