@@ -30,6 +30,9 @@ public class FilmService {
     public Page<FilmDto> search(SearchRequest dto, Pageable pageable) {
         QFilm film = QFilm.film;
         BooleanBuilder builder = new BooleanBuilder();
+
+        builder.and(film.active.isTrue());
+
         if (dto.getCategory() != null) {
             builder.and(film.categories.any().name.containsIgnoreCase(dto.getCategory()));
         }
